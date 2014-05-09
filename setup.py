@@ -40,10 +40,8 @@ setup(
     license='MIT License',
     author='Philip Masek',
     tests_require=['pytest'],
-    # install_requires=['Flask>=0.10.1',
-    #                 'Flask-SQLAlchemy>=1.0',
-    #                 'SQLAlchemy==0.8.2',
-    #                 ],
+    install_requires=['requests>=2.2.1'
+                    ],
     cmdclass={'tests': PyTest},
     author_email='philip.masek@gmail.com',
     description="Framework for evaluating face recognition APIs",
