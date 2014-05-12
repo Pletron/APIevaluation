@@ -1,27 +1,47 @@
 """Main test class for APIevaluation"""
 
-from apievaluation.apimodules import ReKognition
 import os
+from apievaluation import apievaluation
+from apievaluation.apimodules import ReKognition, FacePlusPlus
+from apievaluation.apitools import tools
+import settings
+
+TEST_IMAGES_DIR = os.path.join(settings.ROOT_DIR, "tests/res/images")
 
 
 class TestAPIevaluationBase(object):
-    @staticmethod
-    def is_html_response(response):
-        """Return True if *response* is an HTML response"""
-        assert 'text/html' in str(response.headers['Content-type'])
-        return '<!DOCTYPE html>' in response.get_data(as_text=True)
 
-class TestReKognitionBase(object):
-    """Base class for all APIevaluation test classes."""
+    def test_get_API_results(self):
+        json_result = apievaluation.get_API_results(image_directory=TEST_IMAGES_DIR)
+        assert len(json_result) > 0
 
-    def test_url(self):
-        assert len(ReKognition.get_Data(os.path.dirname(os.path.realpath(__file__))+'/test_images/people.jpg')) == 4
 
+
+
+
+class TestToolsBase(object):
 
     def test_base64(self):
-        base64_image = ReKognition.base64_convert(os.path.dirname(os.path.realpath(__file__))+'/test_images/people.jpg')
-        assert len(base64_image) > 25000
+        assert len(tools.base64_convert(TEST_IMAGES_DIR+'/people.jpg')) > 25000
+
+    def test_load_module(self):
+        mod = tools.load_module(os.path.join(os.path.split(os.path.abspath(os.path.dirname(__file__)))[0], 'apievaluation/apimodules/ReKognition.py'))
+        assert hasattr(mod,"get_Data")
+
+
+
+class TestReKognitionBase(object):
+
+    def test_url(self):
+        assert len(ReKognition.get_Data(TEST_IMAGES_DIR+'/people.jpg')) == 4
 
     def test_send_request(self):
-        json_result = ReKognition.send_request(os.path.dirname(os.path.realpath(__file__))+'/test_images/people.jpg')
-        assert json_result['execution_time'] > 0
+        json_result = ReKognition.send_request(TEST_IMAGES_DIR+'/people.jpg')
+        assert json_result['status'] == 'success'
+
+
+class TestFacePP(object):
+
+    def test_send_request(self):
+        json_result = FacePlusPlus.send_request(TEST_IMAGES_DIR+'/people.jpg')
+        assert json_result['status'] == 'success'

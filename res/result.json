@@ -1,0 +1,153 @@
+{
+    "001_1_F_1_M.jpg": {
+        "FacePlusPlus": {
+            "execution_time": 4.569638013839722,
+            "face": [],
+            "img_height": 640,
+            "img_id": "dc2ed2d48e83aa618b24a7555ad960b3",
+            "img_width": 1024,
+            "session_id": "8e65760cc20f4fdb945d639c390d4cb8",
+            "status": "no detection",
+            "url": null
+        },
+        "ReKognition": {
+            "execution_time": 4.4975409507751465,
+            "face_detection": [],
+            "ori_img_size": {
+                "height": 640,
+                "width": 1024
+            },
+            "status": "no detection",
+            "url": "base64",
+            "usage": {
+                "api_id": "4HxkCzeWAtPyrsyt",
+                "quota": 4756,
+                "status": "Succeed."
+            }
+        }
+    },
+    "002_1_F_1_M.jpg": {
+        "FacePlusPlus": {
+            "execution_time": 3.613779067993164,
+            "face": [],
+            "img_height": 640,
+            "img_id": "bbf6f7fd1487b28d5983a4a12d40e715",
+            "img_width": 1024,
+            "session_id": "300d71177fc14692bd78bc0d1a7c6be3",
+            "status": "no detection",
+            "url": null
+        },
+        "ReKognition": {
+            "execution_time": 3.8912830352783203,
+            "face_detection": [
+                {
+                    "boundingbox": {
+                        "size": {
+                            "height": 42.1,
+                            "width": 42.1
+                        },
+                        "tl": {
+                            "x": 207.08,
+                            "y": 296.96
+                        }
+                    },
+                    "confidence": 0.01,
+                    "pose": {
+                        "pitch": -6.13,
+                        "roll": 2.96,
+                        "yaw": -52.13
+                    },
+                    "sex": 0.1
+                }
+            ],
+            "ori_img_size": {
+                "height": 640,
+                "width": 1024
+            },
+            "status": "success",
+            "url": "base64",
+            "usage": {
+                "api_id": "4HxkCzeWAtPyrsyt",
+                "quota": 4755,
+                "status": "Succeed."
+            }
+        }
+    },
+    "003_1_F_1_M.jpg": {
+        "FacePlusPlus": {
+            "execution_time": 5.310527086257935,
+            "face": [
+                {
+                    "attribute": {
+                        "age": {
+                            "range": 5,
+                            "value": 7
+                        },
+                        "gender": {
+                            "confidence": 65.7961,
+                            "value": "Male"
+                        },
+                        "race": {
+                            "confidence": 99.4606,
+                            "value": "White"
+                        },
+                        "smiling": {
+                            "value": 36.9884
+                        }
+                    },
+                    "face_id": "0f7a881681be6e6030ef3e506e950f8c",
+                    "position": {
+                        "center": {
+                            "x": 6.0,
+                            "y": 60.8
+                        },
+                        "eye_left": {
+                            "x": 4.807667,
+                            "y": 59.752
+                        },
+                        "eye_right": {
+                            "x": 6.006867,
+                            "y": 59.686667
+                        },
+                        "height": 6.4,
+                        "mouth_left": {
+                            "x": 5.2343,
+                            "y": 62.6896
+                        },
+                        "mouth_right": {
+                            "x": 6.142017,
+                            "y": 62.301867
+                        },
+                        "nose": {
+                            "x": 5.235983,
+                            "y": 61.308
+                        },
+                        "width": 4.0
+                    },
+                    "tag": ""
+                }
+            ],
+            "img_height": 640,
+            "img_id": "2f65fb235a45f38f245d6c96953828c6",
+            "img_width": 1024,
+            "session_id": "d3414af08ea842c589ce3427549b9ca6",
+            "status": "success",
+            "url": null
+        },
+        "ReKognition": {
+            "execution_time": 4.0233070850372314,
+            "face_detection": [],
+            "ori_img_size": {
+                "height": 640,
+                "width": 1024
+            },
+            "status": "no detection",
+            "url": "base64",
+            "usage": {
+                "api_id": "4HxkCzeWAtPyrsyt",
+                "quota": 4754,
+                "status": "Succeed."
+            }
+        }
+    }
+}
