@@ -1,17 +1,21 @@
+import socket
 import urllib2,urllib
 import time
 from apievaluation.apimodules.lib.facepp import File, APIError
 from apievaluation.apimodules.lib.facepp import API
+from apievaluation.apitools.database import Database
 
 URL = 'https://apius.faceplusplus.com/v2/'
 API_KEY = 'e0058e5bd626d7fd9b5151be643035e1'
 API_SECRET = 'Ochu_1o1DFtaUA6brGQzOQ-vARsGXf1I'
 EXAMPLE_IMAGE = urllib.quote_plus('http://faceplusplus.com/static/img/demo/8.jpg')
-TIMEOUT = 10
+TIMEOUT = 5
 
 
 def send_request(image_directory):
-
+    db = Database("FacePlusPlus")
+    image = image_directory.split("/")
+    image = image[len(image)-1]
 
     start_time = time.time()
     try:
@@ -24,13 +28,17 @@ def send_request(image_directory):
 
         if len(json_result['face']) > 0:
             json_result['status'] = 'success'
+            gender = json_result['face'][0]['attribute']['gender']['value']
+            gender_accuracy = json_result['face'][0]['attribute']['gender']['confidence']
+            age = json_result['face'][0]['age']
+            db.add_image("success",image,json_result['execution_time'], gender, gender_accuracy, age, -1)
         else:
             json_result['status'] = 'no detection'
+            db.add_image("no detection", image,json_result['execution_time'], -1, -1, -1, -1)
 
+        # db.save()
         return json_result
-    except urllib2.URLError:
-        return {'status' : 'timeout'}
-    except APIError as e:
+    except Exception as e:
         execution_time = time.time() - start_time
-        return {'execution_time' : execution_time, 'status' : {'error':{'code':e.code, 'url':e.url}}}
-
+        db.add_image("error", image,execution_time, -1, -1, -1, -1)
+        return {'execution_time' : execution_time, 'status' : {'error':'Exception'}}

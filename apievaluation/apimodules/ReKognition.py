@@ -2,17 +2,20 @@ import urllib
 import requests
 import time
 from apievaluation.apitools import tools
+from apievaluation.apitools.database import Database
 
 URL = 'https://rekognition.com/func/api/'
 API_KEY = '4HxkCzeWAtPyrsyt'
 API_SECRET = 'lP2bp9lEJCE5a815'
-JOBS = {'face_gender'}
+JOBS = 'face_gender_age_aggressive_place'
 EXAMPLE_IMAGE = urllib.quote_plus('http://rekognition.com/static/img/people.jpg')
 TIMEOUT = 10
 
 
 def send_request(image_directory):
-
+    db = Database("ReKognition")
+    image = image_directory.split("/")
+    image = image[len(image)-1]
     start_time = time.time()
 
     try:
@@ -24,12 +27,24 @@ def send_request(image_directory):
 
         if len(json_result['face_detection']) > 0:
             json_result['status'] = 'success'
+            gender = 'Male' if float(json_result['face_detection'][0]['sex']) > 0.5 else 'Female'
+            gender_accuracy =  abs(json_result['face_detection'][0]['sex']-0.5)*200
+            age = json_result['face_detection'][0]['age']
+            confidence = json_result['face_detection'][0]['confidence']
+            db.add_image("success",image,json_result['execution_time'], gender, gender_accuracy, age, confidence)
         else:
             json_result['status'] = 'no detection'
+            db.add_image("no detection",image,json_result['execution_time'], -1, -1, -1, -1)
+
+        # db.save()
+
 
         return json_result
     except requests.exceptions.Timeout:
+        execution_time = time.time() - start_time
+        db.add_image("timeout",image,execution_time, -1, -1, -1, -1)
         return {'status' : 'timeout'}
+
 
 
 

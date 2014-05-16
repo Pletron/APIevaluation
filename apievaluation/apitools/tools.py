@@ -32,5 +32,3 @@ def base64_convert(image_directory):
         return image_data.encode("base64")
 
 
-
-5
