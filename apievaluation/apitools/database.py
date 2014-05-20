@@ -14,7 +14,7 @@ class Database(object):
         try:
             self.cursor.execute("SELECT * FROM %s" % table)
             result = self.cursor.fetchall()
-            print len(result)
+            #print len(result)
         except Exception as e:
             self.cursor.execute("CREATE TABLE `"+self.table+"` ("+
                   "`id` int(11) unsigned NOT NULL AUTO_INCREMENT,"+
@@ -35,7 +35,7 @@ class Database(object):
     def add_image(self, status=-1, image=-1, execution_time=-1, gender=-1, gender_accuracy=-1, age=-1, confidence=-1):
         try:
             query = """INSERT INTO `"""+self.table+"""` (`status`, `image`, `execution_time`, `gender`, `gender_accuracy`, `age`, `confidence`) VALUES ('%s','%s',%s,'%s', %s, %s, %s)""" % (status,image,execution_time,gender,gender_accuracy,age,confidence)
-            print query
+            #print query
             self.cursor.execute(query)
             self.db.commit()
         except Exception as e:
