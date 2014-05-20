@@ -26,12 +26,13 @@ def send_request(image_directory):
         json_result['execution_time'] = execution_time
 
         if len(json_result['face_detection']) > 0:
-            json_result['status'] = 'success'
-            gender = 'Male' if float(json_result['face_detection'][0]['sex']) > 0.5 else 'Female'
-            gender_accuracy =  abs(json_result['face_detection'][0]['sex']-0.5)*200
-            age = json_result['face_detection'][0]['age']
-            confidence = json_result['face_detection'][0]['confidence']
-            db.add_image("success",image,json_result['execution_time'], gender, gender_accuracy, age, confidence)
+            for face in json_result['face_detection']:
+                face['status'] = 'success'
+                gender = 'Male' if float(face['sex']) > 0.5 else 'Female'
+                gender_accuracy =  abs(face['sex']-0.5)*200
+                age = face['age']
+                confidence = face['confidence']
+                db.add_image("success",image,json_result['execution_time'], gender, gender_accuracy, age, confidence)
         else:
             json_result['status'] = 'no detection'
             db.add_image("no detection",image,json_result['execution_time'], -1, -1, -1, -1)

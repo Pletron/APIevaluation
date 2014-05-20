@@ -1,8 +1,8 @@
 import socket
 import urllib2,urllib
 import time
-from apievaluation.apimodules.apis.facepp import File, APIError
-from apievaluation.apimodules.apis.facepp import API
+from apievaluation.apimodules.libraries.facepp import File, APIError
+from apievaluation.apimodules.libraries.facepp import API
 from apievaluation.apitools.database import Database
 
 URL = 'https://apius.faceplusplus.com/v2/'
@@ -27,11 +27,12 @@ def send_request(image_directory):
         json_result['status'] = 'success'
 
         if len(json_result['face']) > 0:
-            json_result['status'] = 'success'
-            gender = json_result['face'][0]['attribute']['gender']['value']
-            gender_accuracy = json_result['face'][0]['attribute']['gender']['confidence']
-            age = json_result['face'][0]['age']
-            db.add_image("success",image,json_result['execution_time'], gender, gender_accuracy, age, -1)
+            for face in json_result['face']:
+                face['status'] = 'success'
+                gender = face['attribute']['gender']['value']
+                gender_accuracy = face['attribute']['gender']['confidence']
+                age = face['age']
+                db.add_image("success",image,json_result['execution_time'], gender, gender_accuracy, age, -1)
         else:
             json_result['status'] = 'no detection'
             db.add_image("no detection", image,json_result['execution_time'], -1, -1, -1, -1)

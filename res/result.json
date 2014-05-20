@@ -1,1 +1,88 @@
-{}
+{
+    "SHF.jpg": {
+        "FacePlusPlus": {
+            "execution_time": 2.169888973236084,
+            "status": {
+                "error": "Exception"
+            }
+        },
+        "ReKognition": {
+            "execution_time": 2.132772207260132,
+            "face_detection": [
+                {
+                    "age": 38.69,
+                    "boundingbox": {
+                        "size": {
+                            "height": 63.08,
+                            "width": 63.08
+                        },
+                        "tl": {
+                            "x": 282.31,
+                            "y": 18.46
+                        }
+                    },
+                    "confidence": 1,
+                    "pose": {
+                        "pitch": 3.83,
+                        "roll": -6.33,
+                        "yaw": 4.54
+                    },
+                    "sex": 0.98,
+                    "status": "success"
+                },
+                {
+                    "age": 33.07,
+                    "boundingbox": {
+                        "size": {
+                            "height": 62.31,
+                            "width": 62.31
+                        },
+                        "tl": {
+                            "x": 62.31,
+                            "y": 22.31
+                        }
+                    },
+                    "confidence": 1,
+                    "pose": {
+                        "pitch": -0.74,
+                        "roll": 0.97,
+                        "yaw": 1.66
+                    },
+                    "sex": 1,
+                    "status": "success"
+                },
+                {
+                    "age": 34.12,
+                    "boundingbox": {
+                        "size": {
+                            "height": 60.77,
+                            "width": 60.77
+                        },
+                        "tl": {
+                            "x": 497.69,
+                            "y": 27.69
+                        }
+                    },
+                    "confidence": 1,
+                    "pose": {
+                        "pitch": 0.87,
+                        "roll": -1.07,
+                        "yaw": 9.3
+                    },
+                    "sex": 1,
+                    "status": "success"
+                }
+            ],
+            "ori_img_size": {
+                "height": 372,
+                "width": 620
+            },
+            "url": "base64",
+            "usage": {
+                "api_id": "4HxkCzeWAtPyrsyt",
+                "quota": 3904,
+                "status": "Succeed."
+            }
+        }
+    }
+}
