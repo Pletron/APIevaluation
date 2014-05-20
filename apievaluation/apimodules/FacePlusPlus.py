@@ -1,8 +1,8 @@
 import socket
 import urllib2,urllib
 import time
-from apievaluation.apimodules.lib.facepp import File, APIError
-from apievaluation.apimodules.lib.facepp import API
+from apievaluation.apimodules.apis.facepp import File, APIError
+from apievaluation.apimodules.apis.facepp import API
 from apievaluation.apitools.database import Database
 
 URL = 'https://apius.faceplusplus.com/v2/'
