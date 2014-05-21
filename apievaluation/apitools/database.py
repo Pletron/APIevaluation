@@ -8,7 +8,7 @@ class Database(object):
 
     def __init__(self, table):
         self.table = table
-        self.db = MySQLdb.connect(host="localhost", port=3306, user="root", passwd="root", db="apievaluation")
+        self.db = MySQLdb.connect(host="localhost", port=3306, user="root", passwd="", db="apievaluation")
         self.cursor = self.db.cursor()
 
         try:

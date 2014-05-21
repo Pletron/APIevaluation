@@ -27,8 +27,8 @@ def send_request(image_directory):
         json_result['status'] = 'success'
 
         if len(json_result['face']) > 0:
+            json_result['status'] = 'success'
             for face in json_result['face']:
-                face['status'] = 'success'
                 gender = face['attribute']['gender']['value']
                 gender_accuracy = face['attribute']['gender']['confidence']
                 age = face['age']

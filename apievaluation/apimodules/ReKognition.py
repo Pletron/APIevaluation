@@ -26,8 +26,8 @@ def send_request(image_directory):
         json_result['execution_time'] = execution_time
 
         if len(json_result['face_detection']) > 0:
+            json_result['status'] = 'success'
             for face in json_result['face_detection']:
-                face['status'] = 'success'
                 gender = 'Male' if float(face['sex']) > 0.5 else 'Female'
                 gender_accuracy =  abs(face['sex']-0.5)*200
                 age = face['age']

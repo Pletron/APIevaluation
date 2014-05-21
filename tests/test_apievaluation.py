@@ -2,7 +2,7 @@
 
 import os
 from apievaluation import apievaluation
-from apievaluation.apimodules import ReKognition, FacePlusPlus
+from apievaluation.apimodules import ReKognition, FacePlusPlus, OpenBR
 from apievaluation.apitools import tools
 import settings
 
@@ -44,4 +44,10 @@ class TestFacePP(object):
 
     def test_send_request(self):
         json_result = FacePlusPlus.send_request(TEST_IMAGES_DIR+'/2003.jpg')
+        assert json_result['status'] == 'success'
+
+class TestOpenBR(object):
+
+    def test_send_request(self):
+        json_result = OpenBR.send_request(TEST_IMAGES_DIR+'/2003.jpg')
         assert json_result['status'] == 'success'
