@@ -31,7 +31,7 @@ def send_request(image_directory):
             for face in json_result['face']:
                 gender = face['attribute']['gender']['value']
                 gender_accuracy = face['attribute']['gender']['confidence']
-                age = face['age']
+                age = face['attribute']['age']['value']
                 db.add_image("success",image,json_result['execution_time'], gender, gender_accuracy, age, -1)
         else:
             json_result['status'] = 'no detection'
@@ -42,4 +42,6 @@ def send_request(image_directory):
     except Exception as e:
         execution_time = time.time() - start_time
         db.add_image("error", image,execution_time, -1, -1, -1, -1)
+        print "Face plus plus exception:"
+        print e
         return {'execution_time' : execution_time, 'status' : {'error':'Exception'}}
