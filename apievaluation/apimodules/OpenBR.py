@@ -9,27 +9,24 @@ import settings
 
 output = {}
 def send_request(image_directory, process=None):
+    proc = process.process
+    print "New openBR thread"
     db = Database('OpenBR')
     image = image_directory.split("/")
     image = image[len(image)-1]
 
     start_time = time.time()
-    process.write_handle(input=image_directory)
-    results = []
-    while 1:
-        ready, _, _ = select.select([process.master], [], [], 0.4)
-        if ready:
-            data = os.read(process.master, 512)
-            if not data:
-                break
-            if data.rstrip() != 'end of result':
-                results.append(data.rstrip())
-            else:
-                break
-        elif process.process.poll() is not None: # select timeout
-            break # proc exited
-
+    proc.sendline(image_directory)
+    proc.expect("end of result")
     execution_time = time.time() - start_time
+    results = proc.before
+    results = results.replace('\r','').split("\n")
+    if results[0] == '':
+        results.pop(0)
+    results.pop(0)
+    results.pop(len(results)-1)
+
+
 
     headers = results[0].split(',')
     results.pop(0)
@@ -38,12 +35,20 @@ def send_request(image_directory, process=None):
     if len(results) == 0:
         output['status'] = 'no faces'
     else:
-        output['status'] = 'sucess'
+        output['status'] = 'success'
 
     output['face'] = []
     for res in results:
-        output['face'].append({'gender':res[headers.index('Gender')]})
+        res = res.split(',')
+        eyeLeft = {}
+        eyeRight = {}
+        eyeLeft['X'] = float(res[headers.index('First_Eye_X')])
+        eyeLeft['Y'] = float(res[headers.index('First_Eye_Y')])
+        eyeRight['X'] = float(res[headers.index('Second_Eye_X')])
+        eyeRight['Y'] = float(res[headers.index('Second_Eye_Y')])
+        output['face'].append({'gender':res[headers.index('Gender')],'confidence':float(res[headers.index('Confidence')]),'left_eye':eyeLeft,'right_eye':eyeRight})
 
+        db.add_image(output['status'],image,output['execution_time'],res[headers.index('Gender')],-1,-1,res[headers.index('Confidence')])
 
     return output
 
@@ -52,7 +57,5 @@ def send_request(image_directory, process=None):
 def start_module():
     cmd = '%s/libraries/OpenBR' % settings.MODULES_DIR
     p = ExternalProc(arg_list=cmd)
-    while True:
-        if p.stdout.readline().find('Algorithm loaded') > -1:
-            break
+    p.process.expect('Algorithm loaded')
     return p

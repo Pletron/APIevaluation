@@ -41,7 +41,8 @@ setup(
     author='Philip Masek',
     tests_require=['pytest'],
     install_requires=['requests>=2.2.1',
-                      'MySQL-python==1.2.5'
+                      'MySQL-python==1.2.5',
+                      'pexpect'
                     ],
     cmdclass={'tests': PyTest},
     author_email='philip.masek@gmail.com',
