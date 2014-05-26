@@ -4,7 +4,7 @@ import time
 from apievaluation.apitools import tools
 from apievaluation.apitools.database import Database
 
-URL = 'https://rekognition.com/func/api/'
+URL = 'http://www.rekognition.com/func/api/'
 API_KEY = '4HxkCzeWAtPyrsyt'
 API_SECRET = 'lP2bp9lEJCE5a815'
 JOBS = 'face_gender_age_aggressive_place'

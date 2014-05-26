@@ -21,6 +21,7 @@ def send_request(image_directory, process=None):
     execution_time = time.time() - start_time
     results = proc.before
     results = results.replace('\r','').split("\n")
+
     if results[0] == '':
         results.pop(0)
     results.pop(0)
