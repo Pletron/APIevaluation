@@ -1,7 +1,5 @@
-import json
 from threading import Thread
 import time
-from twisted.python.util import switchUID
 import settings
 import os
 from apitools import tools

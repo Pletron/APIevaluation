@@ -1,8 +1,4 @@
-from _ctypes import sizeof
-import io
 import time
-import select
-import os
 from apievaluation.apitools.ExternalProc import ExternalProc
 from apievaluation.apitools.database import Database
 import settings

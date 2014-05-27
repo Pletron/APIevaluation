@@ -1,7 +1,6 @@
-import socket
-import urllib2,urllib
+import urllib
 import time
-from apievaluation.apimodules.libraries.facepp import File, APIError
+from apievaluation.apimodules.libraries.facepp import File
 from apievaluation.apimodules.libraries.facepp import API
 from apievaluation.apitools.database import Database
 
