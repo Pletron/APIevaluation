@@ -6,8 +6,8 @@ import settings
 output = {}
 def send_request(image_directory, process=None):
     proc = process.process
-    print "New openBR thread"
-    db = Database('OpenBR')
+    print "New openCV thread"
+    db = Database('OpenCV')
     image = image_directory.split("/")
     image = image[len(image)-1]
 
@@ -42,16 +42,16 @@ def send_request(image_directory, process=None):
         face['Face_topLeft_Y'] = float(res[headers.index('Face_topLeft_Y')])
         face['Face_bottomRight_X'] = float(res[headers.index('Face_bottomRight_X')])
         face['Face_bottomRight_Y'] = float(res[headers.index('Face_bottomRight_Y')])
-        output['face'].append({'gender':res[headers.index('Gender')],'confidence':float(res[headers.index('Confidence')]),'face':face})
+        output['face'].append({'gender':res[headers.index('Gender')],'face':face})
 
-        db.add_image(output['status'],image,output['execution_time'],face['Face_topLeft_X'],face['Face_topLeft_Y'],face['Face_bottomRight_X'],face['Face_bottomRight_Y'],res[headers.index('Gender')],-1,-1,res[headers.index('Confidence')])
+        db.add_image(output['status'],image,output['execution_time'],face['Face_topLeft_X'],face['Face_topLeft_Y'],face['Face_bottomRight_X'],face['Face_bottomRight_Y'],res[headers.index('Gender')],-1,-1,-1)
 
     return output
 
 
 
 def start_module():
-    cmd = '%s/libraries/OpenBR/OpenBR %s/libraries/OpenBR/MyGenderAlgorithm' % (settings.MODULES_DIR,settings.MODULES_DIR)
+    cmd = '%s/libraries/OpenCV/OpenCV %s/libraries/OpenCV/trained.xml' % (settings.MODULES_DIR,settings.MODULES_DIR)
     p = ExternalProc(arg_list=cmd)
     p.process.expect('Algorithm loaded')
     return p

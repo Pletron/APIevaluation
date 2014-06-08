@@ -2,7 +2,7 @@
 
 import os
 from apievaluation import apievaluation
-from apievaluation.apimodules import ReKognition, FacePlusPlus, OpenBR
+from apievaluation.apimodules import ReKognition, FacePlusPlus, OpenBR, OpenCV
 from apievaluation.apitools import tools
 import settings
 
@@ -49,5 +49,13 @@ class TestFacePP(object):
 class TestOpenBR(object):
 
     def test_send_request(self):
-        json_result = OpenBR.send_request(TEST_IMAGES_DIR+'/2003.jpg')
+        proc = OpenBR.start_module()
+        json_result = OpenBR.send_request(TEST_IMAGES_DIR+'/2003.jpg',proc)
+        assert json_result['status'] == 'success'
+
+class TestOpenCV(object):
+
+    def test_send_request(self):
+        proc = OpenCV.start_module()
+        json_result = OpenCV.send_request(TEST_IMAGES_DIR+'/2003.jpg',proc)
         assert json_result['status'] == 'success'

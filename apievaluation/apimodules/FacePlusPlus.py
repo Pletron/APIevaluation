@@ -1,5 +1,6 @@
 import urllib
 import time
+import requests
 from apievaluation.apimodules.libraries.facepp import File
 from apievaluation.apimodules.libraries.facepp import API
 from apievaluation.apitools.database import Database
@@ -8,7 +9,7 @@ URL = 'https://apius.faceplusplus.com/v2/'
 API_KEY = 'e0058e5bd626d7fd9b5151be643035e1'
 API_SECRET = 'Ochu_1o1DFtaUA6brGQzOQ-vARsGXf1I'
 EXAMPLE_IMAGE = urllib.quote_plus('http://faceplusplus.com/static/img/demo/8.jpg')
-TIMEOUT = 5
+TIMEOUT = 10
 
 
 def send_request(image_directory):
@@ -31,7 +32,11 @@ def send_request(image_directory):
                 gender = face['attribute']['gender']['value']
                 gender_accuracy = face['attribute']['gender']['confidence']
                 age = face['attribute']['age']['value']
-                db.add_image("success",image,json_result['execution_time'], gender, gender_accuracy, age, -1)
+                topLeft_X = face['position']['center']['x']-(face['position']['width']/2)
+                topLeft_Y = face['position']['center']['y']-(face['position']['height']/2)
+                bottomRight_X = face['position']['center']['x']+(face['position']['width']/2)
+                bottomRight_Y = face['position']['center']['y']+(face['position']['height']/2)
+                db.add_image("success",image,json_result['execution_time'], topLeft_X, topLeft_Y, bottomRight_X, bottomRight_Y, gender, gender_accuracy, age, -1)
         else:
             json_result['status'] = 'no detection'
             db.add_image("no detection", image,json_result['execution_time'], -1, -1, -1, -1)

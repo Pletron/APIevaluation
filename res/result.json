@@ -1,182 +1,129 @@
 {
-    "2102.jpg": {
+    "1002_M.jpg": {
         "FacePlusPlus": {
-            "execution_time": 1.0054478645324707,
+            "execution_time": 10.526605129241943,
             "face": [
                 {
                     "attribute": {
                         "age": {
-                            "range": 7,
-                            "value": 30
+                            "range": 6,
+                            "value": 19
                         },
                         "gender": {
-                            "confidence": 94.6063,
+                            "confidence": 99.9996,
                             "value": "Male"
                         },
                         "race": {
-                            "confidence": 99.543,
+                            "confidence": 69.7533,
                             "value": "White"
                         },
                         "smiling": {
-                            "value": 50.9651
+                            "value": 75.6628
                         }
                     },
-                    "face_id": "216224a9c91e029dc51c567eea1c98e2",
+                    "face_id": "a7f66cfd03391e26d95edc41f58cb789",
                     "position": {
                         "center": {
-                            "x": 48.076923,
-                            "y": 53.846154
+                            "x": 50.0,
+                            "y": 46.078431
                         },
                         "eye_left": {
-                            "x": 29.634615,
-                            "y": 40.331538
+                            "x": 40.381037,
+                            "y": 35.609412
                         },
                         "eye_right": {
-                            "x": 66.804808,
-                            "y": 35.843654
+                            "x": 64.770122,
+                            "y": 37.675539
                         },
-                        "height": 76.923077,
+                        "height": 40.196078,
                         "mouth_left": {
-                            "x": 36.476346,
-                            "y": 77.830192
+                            "x": 37.903232,
+                            "y": 57.057843
                         },
                         "mouth_right": {
-                            "x": 66.382115,
-                            "y": 75.245577
+                            "x": 60.862561,
+                            "y": 59.459804
                         },
                         "nose": {
-                            "x": 49.0025,
-                            "y": 60.554615
+                            "x": 48.071829,
+                            "y": 47.283235
                         },
-                        "width": 76.923077
+                        "width": 50.0
                     },
                     "tag": ""
                 }
             ],
-            "img_height": 52,
-            "img_id": "cd93b42b4861f8688aa9c70277fa3e3c",
-            "img_width": 52,
-            "session_id": "ccc6bd19e0c640fdb6c5e0d7043bf6bd",
+            "img_height": 204,
+            "img_id": "11138da023f167ef3f26480005d2f213",
+            "img_width": 164,
+            "session_id": "0c7aa1a8a1bf4f6ab5053ca7ad3298b9",
             "status": "success",
             "url": null
         },
         "OpenBR": {
-            "execution_time": 0.12767386436462402,
+            "execution_time": 0.1853010654449463,
             "face": [
                 {
                     "confidence": 1.0,
-                    "gender": "Male",
-                    "left_eye": {
-                        "X": 14.0,
-                        "Y": 17.0
+                    "face": {
+                        "Face_bottomRight_X": 163.0,
+                        "Face_bottomRight_Y": 203.0,
+                        "Face_topLeft_X": 0.0,
+                        "Face_topLeft_Y": 0.0
                     },
-                    "right_eye": {
-                        "X": 34.0,
-                        "Y": 15.0
-                    }
+                    "gender": "Male"
+                }
+            ],
+            "status": "success"
+        },
+        "OpenCV": {
+            "execution_time": 0.11136078834533691,
+            "face": [
+                {
+                    "face": {
+                        "Face_bottomRight_X": 134.0,
+                        "Face_bottomRight_Y": 134.0,
+                        "Face_topLeft_X": 40.0,
+                        "Face_topLeft_Y": 40.0
+                    },
+                    "gender": "female"
                 }
             ],
             "status": "success"
         },
         "ReKognition": {
-            "execution_time": 0.7937350273132324,
+            "execution_time": 2.491502046585083,
             "face_detection": [
                 {
-                    "age": 32.66,
+                    "age": 26.69,
                     "boundingbox": {
                         "size": {
-                            "height": 44.62,
-                            "width": 44.62
+                            "height": 93.08,
+                            "width": 93.08
                         },
                         "tl": {
-                            "x": 2.31,
-                            "y": 2.31
+                            "x": 41.54,
+                            "y": 40.77
                         }
                     },
-                    "confidence": 0.98,
+                    "confidence": 0.99,
                     "pose": {
-                        "pitch": -9.15,
-                        "roll": -7.52,
-                        "yaw": 2.41
+                        "pitch": 4.46,
+                        "roll": 5.1,
+                        "yaw": -20.32
                     },
-                    "sex": 0.99
+                    "sex": 1
                 }
             ],
             "ori_img_size": {
-                "height": 52,
-                "width": 52
+                "height": 204,
+                "width": 164
             },
             "status": "success",
             "url": "base64",
             "usage": {
-                "api_id": "4HxkCzeWAtPyrsyt",
-                "quota": 3220,
-                "status": "Succeed."
-            }
-        }
-    },
-    "2129.jpg": {
-        "FacePlusPlus": {
-            "execution_time": 1.5799031257629395,
-            "face": [],
-            "img_height": 52,
-            "img_id": "4334ef322d38d8354c97669e076a2315",
-            "img_width": 52,
-            "session_id": "b9dc3b468b9a46d09d5957e76ce57bc7",
-            "status": "no detection",
-            "url": null
-        },
-        "OpenBR": {
-            "execution_time": 0.18720102310180664,
-            "face": [
-                {
-                    "confidence": 1.0,
-                    "gender": "Male",
-                    "left_eye": {
-                        "X": 15.0,
-                        "Y": 20.0
-                    },
-                    "right_eye": {
-                        "X": 34.0,
-                        "Y": 16.0
-                    }
-                }
-            ],
-            "status": "success"
-        },
-        "ReKognition": {
-            "execution_time": 0.8552701473236084,
-            "face_detection": [
-                {
-                    "age": 52.03,
-                    "boundingbox": {
-                        "size": {
-                            "height": 43.85,
-                            "width": 43.85
-                        },
-                        "tl": {
-                            "x": 3.85,
-                            "y": 3.85
-                        }
-                    },
-                    "confidence": 1,
-                    "pose": {
-                        "pitch": 4.94,
-                        "roll": -0.43,
-                        "yaw": -9.33
-                    },
-                    "sex": 0.93
-                }
-            ],
-            "ori_img_size": {
-                "height": 52,
-                "width": 52
-            },
-            "status": "success",
-            "url": "base64",
-            "usage": {
-                "api_id": "4HxkCzeWAtPyrsyt",
-                "quota": 3222,
+                "api_id": "JzBQLsVp1751bk1H",
+                "quota": 2225,
                 "status": "Succeed."
             }
         }
