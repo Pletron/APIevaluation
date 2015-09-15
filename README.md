@@ -9,7 +9,7 @@ Installation
 Note that OpenBR must be installed and built for the OpenBR module to work.
 Installation instructions for OpenBR can be found here: 
 
- - http://openbiometrics.org/doxygen/latest/installation.html
+ - http://openbiometrics.org/docs/index.html#install
 
 To install the APIevaluation project make sure to have python-setuptools, python-dev and mysql_config available and installed:
 
